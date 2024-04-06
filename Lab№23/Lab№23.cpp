@@ -4,14 +4,14 @@
 #include <stdexcept>
 
 class Vector
-{
+{ // Класс Veector
 private:
-	int* array;
+	int* array; 
 	int size;
 
 public:
 	Vector(int size = 2 + rand() % 9)
-	{
+	{//  Констркутор, который определяет и инициализирует динамический массив
 		array = new int[size];
 		this->size = size;
 
@@ -20,22 +20,22 @@ public:
 	}
 
 	~Vector()
-	{
+	{// Деструктор 
 		delete[] array;
 	}
 
 	const int Get_size()
-	{
+	{// Функция возвращающая размер массива
 		return size;
 	}
 
 	const int& operator [] (int &index)
-	{
+	{//  Перегрузка оператора []
 		return array[index];
 	}
 
 	const void print_array()
-	{
+	{// Функция для вывода массива на экран
 		for (int i = 0; i < size; i++)
 			std::cout << array[i] << ' ';
 	}
@@ -43,7 +43,7 @@ public:
 };
 
 class RightIterator 
-{
+{// Класс Итератор
 private:
 	std::vector<int>::iterator current;
 	std::vector<int>::iterator end;
@@ -52,15 +52,15 @@ private:
 public:
 	RightIterator(std::vector<int>::iterator begin, std::vector<int>::iterator end, size_t n)
 		: current(begin), end(end), index(n) 
-	{
-		if (index >= static_cast<size_t>(std::distance(begin, end)))
+	{//  Конструктор с параметрами, который инициализирует поля класса и производит итерацию на указанный индекс
+		if (index >= static_cast<size_t>(std::distance(begin, end))) // Проверка на диапозон 
 			throw std::out_of_range("Index out of range");
 
-		std::advance(current, n);
+		std::advance(current, n); // Изменяет положение итератора на указаный индекс
 	}
 
 	int next() 
-	{
+	{// Функция, которая возвращает значение индекса итератора, иначе обрабатывает исключение(71 стр)
 		if (current != end) 
 		{
 			int value = *current;
