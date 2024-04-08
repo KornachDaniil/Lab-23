@@ -76,7 +76,7 @@ int main()
 {
 	srand(time(NULL));
 
-	Vector vector(5);
+	Vector vector;
 	std::cout << "Full array: ";
 	vector.print_array();
 
@@ -87,10 +87,10 @@ int main()
 
 	std::cout << std::endl;
 
-	std::vector<int> test(vector.Get_size());
+	std::vector<int> array(vector.Get_size());
 	for (int i = 0; i < vector.Get_size(); i++)
 	{
-		test[i] = vector[i];
+		array[i] = vector[i];
 	}
 
 	int n;
@@ -99,9 +99,9 @@ int main()
 
 	try 
 	{
-		RightIterator it(test.begin(), test.end(), n);
+		RightIterator it(array.begin(), array.end(), n);
 
-		std::cout << "Current element: " << test[0] << ' ' << "Values to the right of element at index " << n << ": " << it.next() << std::endl;
+		std::cout << "Current element: " << array[0] << ' ' << "Values to the right of element at index " << n << ": " << it.next() << std::endl;
 	}
 	catch (const std::out_of_range& e) 
 	{
